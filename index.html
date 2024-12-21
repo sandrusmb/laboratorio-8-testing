@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/src/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="title">Juego de las siete y media</h1>
+      <p class="score">Puntuación:</p>
+      <div class="container buttons-container">
+        <button class="button card-button" disabled>Dame carta</button>
+        <button class="button stop-button">Me planto</button>
+        <button class="button reset-button">Reiniciar</button>
+      </div>
+      <div class="container container-secondary"></div>
+      <div class="container card-container"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

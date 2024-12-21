@@ -1,0 +1,75 @@
+body {
+  background-color: #5c8001;
+}
+
+.title {
+  font-size: 5rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  font-family: "Dancing Script", cursive;
+  font-weight: 400;
+}
+
+h1 {
+  margin: 0;
+}
+
+.score {
+  margin: 4rem 1rem 3rem 1rem;
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.button {
+  margin: 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
+  box-shadow: 5px 5px 15px 0px rgba(79, 79, 79, 0.4);
+}
+
+.card-button {
+  background-color: #2cdcf3;
+  color: white;
+}
+
+.button[disabled] {
+  opacity: 30%;
+  background-color: #b3b5b5;
+}
+
+.stop-button {
+  background-color: #fb6107;
+  color: white;
+}
+
+.reset-button {
+  background-color: #fbb02d;
+  color: white;
+}
+
+.next-button {
+  background-color: #f3de2c;
+  color: rgb(36, 36, 36);
+}
+
+.card {
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.card-container {
+  flex-wrap: wrap;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
