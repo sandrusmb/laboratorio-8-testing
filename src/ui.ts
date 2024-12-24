@@ -9,6 +9,51 @@ import {
 
 import { giveMeCard } from "./motor";
 
+////// FUNCIONES DE INICIO
+
+export function initializeGame() {
+  enableCardButton();
+  showScore();
+  showInitialCardBack();
+}
+
+export function initializeEventListeners() {
+  if (
+    cardButton !== null &&
+    cardButton !== undefined &&
+    cardButton instanceof HTMLButtonElement
+  ) {
+    cardButton.addEventListener("click", () => {
+      const card = giveMeCard();
+      const cardImageUrl = showCard(card);
+      printCard(cardImageUrl);
+      calculateScore(card);
+    });
+  }
+
+  if (
+    stopButton !== null &&
+    stopButton !== undefined &&
+    stopButton instanceof HTMLButtonElement
+  ) {
+    stopButton.addEventListener("click", () => {
+      showMessage();
+      disableCardButton();
+      whatIsNext();
+    });
+  }
+
+  if (
+    resetButton !== null &&
+    resetButton !== undefined &&
+    resetButton instanceof HTMLButtonElement
+  ) {
+    resetButton.addEventListener("click", reset);
+  }
+}
+
+////// FUNCIONES DE INTERACCIÓN CON EL DOM
+
 export function showScore() {
   let scoreContainer = document.querySelector(".score");
   if (
@@ -94,6 +139,8 @@ export function printCard(cardImageUrl: string): void {
   }
 }
 
+////// FUNCIONES DE LA LÓGICA DEL JUEGO
+
 export function showMessage() {
   const puntos = partida.score;
 
@@ -118,18 +165,18 @@ export function calculateScore(card: number): void {
 }
 
 export function handleGameOver(): void {
-  setTimeout(() => {
-    if (partida.score > 7.5 && partida.state === "PLAYING") {
-      alert("Game over");
-      disableCardButton();
-      partida.state = "GAME_OVER";
-    } else if (partida.score === 7.5 && partida.state === "PLAYING") {
-      alert("¡Lo has clavado! ¡Enhorabuena!");
-      disableCardButton();
-      partida.state = "PERFECT_SCORE";
-    }
-  }, 2000);
+  if (partida.score > 7.5 && partida.state === "PLAYING") {
+    alert("Game over");
+    disableCardButton();
+    partida.state = "GAME_OVER";
+  } else if (partida.score === 7.5 && partida.state === "PLAYING") {
+    alert("¡Lo has clavado! ¡Enhorabuena!");
+    disableCardButton();
+    partida.state = "PERFECT_SCORE";
+  }
 }
+
+////// FUNCIONES DE BOTONES
 
 export function disableCardButton() {
   if (
@@ -150,6 +197,8 @@ export function enableCardButton() {
     cardButton.removeAttribute("disabled");
   }
 }
+
+////// FUNCIONES DE LA INTERACCIÓN DEL JUEGO
 
 export function whatIsNext() {
   if (
@@ -212,45 +261,4 @@ export function reset() {
 
   enableCardButton();
   showInitialCardBack();
-}
-
-export function initializeGame() {
-  enableCardButton();
-  showScore();
-  showInitialCardBack();
-}
-
-export function initializeEventListeners() {
-  if (
-    cardButton !== null &&
-    cardButton !== undefined &&
-    cardButton instanceof HTMLButtonElement
-  ) {
-    cardButton.addEventListener("click", () => {
-      const card = giveMeCard();
-      const cardImageUrl = showCard(card);
-      printCard(cardImageUrl);
-      calculateScore(card);
-    });
-  }
-
-  if (
-    stopButton !== null &&
-    stopButton !== undefined &&
-    stopButton instanceof HTMLButtonElement
-  ) {
-    stopButton.addEventListener("click", () => {
-      showMessage();
-      disableCardButton();
-      whatIsNext();
-    });
-  }
-
-  if (
-    resetButton !== null &&
-    resetButton !== undefined &&
-    resetButton instanceof HTMLButtonElement
-  ) {
-    resetButton.addEventListener("click", reset);
-  }
 }
