@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { partida } from "./modelo";
-import { handleGameOver, showMessage } from "./ui";
+import { handleGameOver, showMessage, calculateScore } from "./ui";
 
 vi.stubGlobal("alert", vi.fn());
 
@@ -102,5 +102,29 @@ describe("showMessage", () => {
 
     // Assert
     expect(alert).toHaveBeenCalledWith("¡Lo has clavado! ¡Enhorabuena!");
+  });
+});
+
+describe("calculateScore", () => {
+  it("Debería sumar el valor de una carta entre 1 y 7", () => {
+    // Arrange
+    const card = 5;
+
+    // Act
+    calculateScore(card);
+
+    // Assert
+    expect(partida.score).toBe(5);
+  });
+
+  it("Debería sumar 0.5 para cartas mayores o iguales a 10", () => {
+    // Arrange
+    const card = 10;
+
+    // Act
+    calculateScore(card);
+
+    // Assert
+    expect(partida.score).toBe(0.5);
   });
 });
