@@ -6,7 +6,9 @@ export function calculateRandomNumber(): number {
 }
 
 export function giveMeCard(): number {
-  calculateRandomNumber();
+  if (partida.cardNumber === 0) {
+    calculateRandomNumber();
+  }
   if (partida.cardNumber > 7) {
     partida.cardNumber += 2;
   }
